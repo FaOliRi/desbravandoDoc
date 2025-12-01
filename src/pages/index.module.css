@@ -21,3 +21,184 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Hero Section com onda e ícones flutuantes */
+.heroSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  background: linear-gradient(180deg, #f5f6f7 0%, #e9ecef 100%);
+  overflow: hidden;
+  padding: 4rem 2rem 200px;
+}
+
+/* Conteúdo principal centralizado */
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  position: relative;
+  max-width: 800px;
+}
+
+.logoContainer {
+  margin-bottom: 2rem;
+  
+}
+
+.logo {
+  max-width: 250px;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #1c1e21;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #606770;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Onda SVG na parte inferior */
+.waveContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 5;
+}
+
+.waveSvg {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+
+/* Ícones flutuantes no fundo */
+.backgroundIcons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.floatingIcon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  opacity: 0.6;
+  animation: float 7s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.floatingIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(5deg);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 996px) {
+  .heroSection {
+    min-height: 500px;
+    padding: 3rem 1.5rem 150px;
+  }
+
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    max-width: 140px;
+  }
+
+  .waveSvg {
+    height: 150px;
+  }
+
+  .floatingIcon {
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 450px;
+    padding: 2rem 1rem 120px;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .logo {
+    max-width: 250px;
+  }
+
+  .waveSvg {
+    height: 100px;
+  }
+
+  .floatingIcon {
+    display: none;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .buttons a {
+    width: 100%;
+  }
+}

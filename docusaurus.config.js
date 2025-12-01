@@ -45,6 +45,13 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/faoliri/desbravandoDoc/edit/main/website/',
+          lastVersion: 'current',
+          versions:{
+            current: {
+              label: '1.0.0',
+              path: '1.0.0',
+        },
+          }
         },
         blog: {
           showReadingTime: true,
@@ -69,7 +76,7 @@ const config = {
         title: 'Desbravando Doc',
         logo: {
           alt: 'Desbravando Doc Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.png',
         },
         items: [
           {
@@ -84,6 +91,10 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {
+            type: 'docsVersionDropdown',
+            versions: ['current', '3.0', '2.0'],
+          }
         ],
       },
       footer: {
@@ -139,7 +150,18 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      colorMode: {
+  defaultMode: 'dark',
+  disableSwitch: false,
+  respectPrefersColorScheme: true,
+},
+stylesheets: [{ href: '/css/custom.css', type: 'text/css' }],
     }),
+    plugins: [
+    './src/plugin/journey-plugin/',
+    '@docusaurus/theme-live-codeblock', // ← Adicione isto
+    // ... outros plugins
+  ],
 };
 
 export default config;

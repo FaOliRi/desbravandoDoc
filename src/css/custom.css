@@ -1,30 +1,235 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ────────────────────────────────────────────
+   DEVSHIFT – THEME DARK
+   Coloque este arquivo em src/css/custom.css
+   ──────────────────────────────────────────── */
 
-/* You can override the default Infima variables here. */
+/* 1.  VARIABLES ───────────────────────────── */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-color-primary: #ff4500;
+  --tech-css: #663399;
+  --tech-html5: #E44D26;
+  --tech-javascript-1: #F0DB4F;
+  --tech-javascript-2: #323330;
+  --tech-nodejs: #3F873F;
+  --tech-react: #61DAFB;
+  --tech-typescript: #007ACC;
+  --tech-next: #000;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+
+
+/* 2.  DARK PALETTE ────────────────────────── */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ds-bg:            #111227;
+  --ds-surface:       #1A1B36;
+  --ds-border:        #2B2C48;
+  --ds-text:          #F0F0F0;
+  --ds-text-muted:    #A0A0A0;
+  --ds-highlight:     rgba(255,255,255,0.04);
+
+  --ifm-background-color: var(--ds-bg);
+  --ifm-navbar-background-color: var(--ds-surface);
+  --ifm-footer-background-color: var(--ds-surface);
+  --ifm-color-primary: #ff4500;
+  --ifm-menu-color-active: var(--ifm-color-primary);
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-hover-overlay: var(--ds-highlight);
+  --ifm-code-background: #21223E;
+  --prism-background-color: #21223E;
 }
+
+/* 3.  GLOBAL RESETS ───────────────────────── */
+html,
+body {
+  background: var(--ds-bg);
+  color: var(--ds-text);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 4.  TYPOGRAPHY ──────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--ds-text);
+  font-weight: 700;
+}
+h1 { font-size: 3.2rem; margin-top: 3rem; }
+h2 { font-size: 2.4rem; margin-top: 2.5rem; }
+h3 { font-size: 2rem;  margin-top: 2rem; }
+p, li, td, th { color: var(--ds-text-muted); line-height: 1.6; }
+
+/* 5.  NAVBAR ──────────────────────────────── */
+.navbar {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  border-bottom: 1px solid var(--ds-border);
+}
+.navbar__logo img { height: 32px; }
+.navbar__link {
+  font-weight: 600;
+  transition: color .15s;
+}
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* 6.  HERO BANNER ─────────────────────────── */
+.hero {
+  background: transparent;
+  padding: 0;
+}
+.hero__img {
+  width: 100%;
+  display: block;
+}
+
+/* 8.  BUTTONS ─────────────────────────────── */
+.button.button--primary {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.button.button--primary:hover {
+  box-shadow: 0 0 10px var(--ifm-color-primary);
+  transform: translateY(-1px);
+}
+.button.button--secondary {
+  background: transparent;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+}
+.button--secondary:hover {
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+/* 9.  CREATOR AVATARS (GENÉRICO) ─────────── */
+.creator-list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.creator {
+  text-align: center;
+}
+.creator__img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--ifm-color-primary);
+  object-fit: cover;
+  transition: box-shadow .25s;
+}
+.creator__img:hover {
+  box-shadow: 0 0 12px var(--ifm-color-primary);
+}
+.creator__name {
+  color: var(--ds-text);
+  margin-top: 1rem;
+  font-weight: 600;
+}
+.creator__role {
+  color: var(--ds-text-muted);
+  font-size: 0.875rem;
+}
+
+/* 10.  FOOTER ─────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--ds-border);
+  color: var(--ds-text-muted);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.footer a { color: var(--ifm-color-primary); }
+
+/* 11.  CODE / PRISM.JS ────────────────────── */
+.codeBlock,
+pre code {
+  background: var(--ifm-code-background) !important;
+  border-radius: 8px !important;
+}
+
+/* 12.  ACCESSIBILITY: FOCUS VISIBLE ───────── */
+:focus-visible {
+  outline: 2px dashed var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* 13.  MOTION PREFERENCE ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* 14.  OPTIONAL BACKGROUND ANIMATION ─────── */
+/* … (sem alterações) */
+
+/* ───────────── FIM DO MODO DARK ─────────── */
+
+:root {
+  /* Cores baseadas na sua paleta */
+  --neon-blue-color: #0438ff;
+  --neon-blue-glow: #00e5ff; /* Um ciano claro ajuda o azul a "acender" mais */
+  --neon-orange-color: #ec7000; /* Laranja Itaú base */
+  --neon-orange-glow: #ff9e42; /* Laranja mais claro para o brilho */
+}
+
+/* Estilo Base do SVG */
+.icon-neon {
+  width: 64px;
+  height: 64px;
+  overflow: visible; /* Importante para o brilho não ser cortado */
+}
+
+/* Efeito Neon Azul */
+.neon-blue {
+  stroke: var(--neon-blue-glow); /* Cor do traço mais clara para parecer luz */
+  /* Cria camadas de sombra para simular a dispersão da luz */
+  filter: drop-shadow(0 0 2px var(--neon-blue-color)) 
+          drop-shadow(0 0 8px var(--neon-blue-color))
+          drop-shadow(0 0 15px var(--neon-blue-color));
+  opacity: 0.9;
+}
+
+/* Efeito Neon Laranja */
+.neon-orange {
+  stroke: var(--neon-orange-glow);
+  filter: drop-shadow(0 0 2px var(--neon-orange-color)) 
+          drop-shadow(0 0 8px var(--neon-orange-color));
+}
+
+/* Animação Opcional: "Pulsar" suavemente na interação */
+.card:hover .neon-orange {
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px var(--neon-orange-color)); }
+  50% { opacity: 0.8; filter: drop-shadow(0 0 2px var(--neon-orange-color)); }
+}
+
+
+/* ========================================
+   REMOVER TAGS DAS PÁGINAS
+   ======================================== */
+
+/* Ocultar seção de tags no rodapé dos docs */
+.theme-doc-footer-tags-row {
+  display: none !important;
+}
+
+/* Ocultar tags no blog (se aplicável) */
+.blogPostFooterTagsRow {
+  display: none !important;
+}
+
+/* Fallback: ocultar qualquer lista de tags */
+footer [class*='tags'] {
+  display: none !important;
+}
+

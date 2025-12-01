@@ -1,61 +1,128 @@
+import React from 'react';
 import clsx from 'clsx';
-import Heading from '@theme/Heading';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
-const FeatureList = [
+// --- Opção A: Importar SVGs como componentes React ---
+import ReactIcon from '@site/static/assets/react.svg';
+import TypeScriptIcon from '@site/static/assets/typescript.svg';
+import NextIcon from '@site/static/assets/nextjs.svg';
+import NodeIcon from '@site/static/assets/nodejs.svg';
+import HTMLIcon from '@site/static/assets/html5.svg';
+import CSSIcon from '@site/static/assets/css.svg';
+import JavaScriptIcon from '@site/static/assets/javascript.svg';
+import NpmIcon from '@site/static/assets/npm.svg';
+
+/* ---- Dados das trilhas (cards) ---- */
+const tracks = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    id: 'fundamentos',
+    title: 'Fundamentos Web',
+    subtitle:
+      'Comece sua jornada com os conceitos essenciais de HTML, CSS e JavaScript.',
+    techIcons: [
+      { Icon: HTMLIcon, alt: 'HTML' },
+      { Icon: CSSIcon,  alt: 'CSS' },
+      { Icon: JavaScriptIcon, alt: 'JavaScript' },
+    ],
+    ctaLink: '/docs/fundamentos',
+
+    /*  ⇣ agora é um array */
+    creators: [
+      {
+        name: 'João Silva',
+        role: 'Fundador & Desenvolvedor',
+        avatar: require('@site/static/img/man.png').default,
+      },
+      {
+        name: 'Maria Lima',
+        role: 'Instrutora',
+        avatar: require('@site/static/img/man.png').default,
+      },
+    ],
   },
+
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
-  },
-  {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    id: 'desenvolvimento',
+    title: 'Desenvolvimento Web',
+    subtitle:
+      'Explore frameworks modernos como React, Next.js, Node e TypeScript.',
+    techIcons: [
+      { Icon: ReactIcon,       alt: 'React' },
+      { Icon: NextIcon,        alt: 'Next.js' },
+      { Icon: TypeScriptIcon,  alt: 'TypeScript' },
+      { Icon: NodeIcon,        alt: 'Node.js' },
+      { Icon: NpmIcon,         alt: 'Npm' },
+    ],
+    ctaLink: '/docs/desenvolvimento',
+
+    creators: [
+      {
+        name: 'Jeko Silva',
+        role: 'Fundador & Desenvolvedor',
+        avatar: require('@site/static/img/man.png').default,
+      },
+      {
+        name: 'Paula Santos',
+        role: 'Co-Instrutora',
+        avatar: require('@site/static/img/man.png').default,
+      },
+    ],
   },
 ];
 
-function Feature({Svg, title, description}) {
+
+/* ---- Componente de um único card ---- */
+function TrackCard({ track }) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+    <div className="col col--6">          {/* coluna mantém o espaçamento */}
+      <article className={styles.card}    /* card só cuida do visual */
+               aria-label={`Trilha ${track.title}`}>
+
+        <header className={styles.cardHeader}>
+          <h3 className={styles.title}>{track.title}</h3>
+          <p  className={styles.subtitle}>{track.subtitle}</p>
+        </header>
+
+        <ul className={styles.techList} aria-label="Tecnologias da trilha">
+          {track.techIcons.map(({ Icon, alt }) => (
+            <li key={alt}>
+              <Icon aria-label={alt} className={styles.techSvg} />
+            </li>
+          ))}
+        </ul>
+
+        <Link to={track.ctaLink} className={styles.btnCta}>
+          Começar
+        </Link>
+
+        <div className={styles.creators}>
+          {track.creators.map(({ avatar, name, role }) => (
+            <div key={name} className={styles.creatorItem}>
+              <img src={avatar}
+                   alt={`Foto de ${name}`}
+                   className={styles.creatorImg}/>
+              <p className={styles.creatorName}>
+                {name}<br/><span>{role}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </article>
     </div>
   );
 }
 
-export default function HomepageFeatures() {
+
+
+/* ---- Seção completa (export default) ---- */
+export default function TracksSection() {
   return (
-    <section className={styles.features}>
+    <section className={styles.tracksSection} id="devshift-tracks">
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+          {tracks.map(track => (
+            <TrackCard key={track.id} track={track} />
           ))}
         </div>
       </div>

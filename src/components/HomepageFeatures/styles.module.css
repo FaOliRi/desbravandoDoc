@@ -9,3 +9,217 @@
   height: 200px;
   width: 200px;
 }
+
+
+/* 7-A.  CARD COMPONENTS ───────────────────── */
+.card {
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(255,69,0,0.35);
+}
+.card h2 {
+  margin-top: 0;
+  color: var(--ds-text);
+}
+.card p {
+  margin: 8px 0 24px;
+}
+
+/* 7-B.  TRACKS SECTION (TRILHAS) ──────────── */
+/* Estes estilos eram o styles.module.css */
+.tracksSection {
+  background: var(--ds-bg);
+  padding: 4rem 0;
+}
+
+.card {
+  position: relative;
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: 20px;
+  padding: 2rem 1.75rem 6rem;
+  overflow: visible;
+  margin-bottom: 2rem;
+  transition: all .3s ease;
+}
+
+/* neon apenas na parte SUPERIOR da borda */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #ff4500 30%,
+    #ff4500 70%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  box-shadow: 0 0 15px #ff4500, 0 0 30px rgba(255,69,0,0.5);
+  opacity: 1;
+  transition: opacity .3s, box-shadow .3s;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+  box-shadow: 0 0 25px #ff4500, 0 0 50px rgba(255,69,0,0.8);
+}
+
+/* neon apenas na parte INFERIOR da borda */
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #ff4500 30%,
+    #ff4500 70%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  box-shadow: 0 0 15px #ff4500, 0 0 30px rgba(255,69,0,0.5);
+  opacity: 1;
+  transition: opacity .3s, box-shadow .3s;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 25px #ff4500, 0 0 50px rgba(255,69,0,0.8);
+}
+
+
+
+
+
+
+/* título + subtítulo */
+.tracksSection .title {
+  font-family: 'Poppins', sans-serif;
+  color: var(--ds-text);
+  font-size: 1.5rem;
+  margin: 0 0 .25rem;
+}
+.tracksSection .subtitle {
+  color: var(--ds-text-muted);
+  margin: 0 0 1.75rem;
+  line-height: 1.4;
+  font-size: 0.9375rem;
+}
+
+/* lista de tecnologias */
+.tracksSection .techList {
+  display: flex;
+  gap: .75rem;
+  margin: 0 0 2rem;
+  list-style: none;
+  padding: 0;
+}
+.tracksSection .techList li {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s;
+}
+.tracksSection .techList li:hover { transform: scale(1.1); }
+.tracksSection .techList img { width: 26px; height: 26px; }
+
+/* botão CTA */
+.tracksSection .btnCta {
+  display: inline-block;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  padding: .75rem 2.5rem;
+  border-radius: 32px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.tracksSection .btnCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px var(--ifm-color-primary);
+}
+
+/* avatar + nome */
+.tracksSection .creator {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  text-align: center;
+}
+.tracksSection .creatorImg {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 3px solid var(--ifm-color-primary);
+  object-fit: cover;
+  margin-bottom: .5rem;
+  transition: box-shadow .25s;
+}
+.tracksSection .creatorImg:hover { box-shadow: 0 0 10px var(--ifm-color-primary); }
+.tracksSection .creatorName {
+  color: var(--ds-text);
+  font-size: .875rem;
+  line-height: 1.3;
+  margin: 0;
+}
+.tracksSection .creatorName span {
+  color: var(--ds-text-muted);
+  font-size: 0.8rem;
+}
+
+/* --- responsivo --- */
+@media (max-width: 768px) {
+  .tracksSection .card { padding-bottom: 7rem; }
+  .tracksSection .creator { right: 50%; transform: translateX(50%); }
+
+  .tracksSection .title { font-size: 1.25rem; }
+  .tracksSection .subtitle { font-size: 0.875rem; }
+}
+@media (max-width: 480px) {
+  .tracksSection .card { padding: 1.5rem 1.25rem 7rem; }
+
+  .tracksSection .techList { gap: 0.5rem; margin-bottom: 1.5rem; }
+  .tracksSection .techList li { width: 44px; height: 44px; }
+  .tracksSection .techList img { width: 22px; height: 22px; }
+
+  .tracksSection .btnCta { padding: 0.625rem 2rem; font-size: 0.875rem; }
+
+  .tracksSection .creatorImg { width: 70px; height: 70px; border-width: 2px; }
+
+  .creators        { right: 50%; transform: translateX(50%); flex-wrap: wrap; }
+  .creatorItem     { margin-top: .75rem; }
+}
+
+/* container dos criadores */
+.creators {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.tracksSection .row {
+  gap: 2rem;        /* qualquer valor que preferir */
+}
+
+
