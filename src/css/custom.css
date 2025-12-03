@@ -1,30 +1,133 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ==================== NAVBAR CUSTOMIZADA (LIGHT + DARK) ==================== */
 
-/* You can override the default Infima variables here. */
+/* Navbar light mode */
+.navbar {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.navbar__title {
+  font-weight: 600;
+  color: var(--gray-426) !important;
+}
+
+.navbar__link {
+  color: var(--gray-424) !important;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.navbar__link:hover {
+  color: var(--itau-orange) !important;
+}
+
+.navbar__link--active {
+  color: var(--itau-orange) !important;
+  font-weight: 600;
+}
+
+/* Logo customizado (caso tenha) */
+.navbar__logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--itau-orange), var(--itau-orange-151), var(--itau-yellow-109));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(255, 98, 0, 0.4);
+}
+
+/* Navbar dark mode */
+[data-theme='dark'] .navbar {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 98, 0, 0.2);
+}
+
+[data-theme='dark'] .navbar__title {
+  color: var(--gray-1) !important;
+}
+
+[data-theme='dark'] .navbar__link {
+  color: var(--gray-3) !important;
+}
+
+[data-theme='dark'] .navbar__link:hover {
+  color: var(--itau-orange) !important;
+}
+
+[data-theme='dark'] .navbar__link--active {
+  color: var(--itau-orange) !important;
+}
+
+[data-theme='dark'] .navbar__logo {
+  box-shadow: 0 0 18px rgba(255, 98, 0, 0.6);
+}
+
+/* Variáveis Itaú */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --itau-orange: #ff6200;
+  --itau-orange-151: #ff7d00;
+  --itau-orange-137: #ff9c00;
+  --itau-yellow-109: #ffcc00;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* Efeitos hover e focus do campo de busca */
+.itau-search-input:hover {
+  box-shadow: 0 4px 16px rgba(255, 98, 0, 0.25) !important;
+  transform: translateY(-1px) !important;
 }
+
+.itau-search-input:focus {
+  outline: none !important;
+  box-shadow: 0 6px 20px rgba(255, 98, 0, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.itau-search-input::placeholder {
+  color: rgba(255, 98, 0, 0.6) !important;
+  font-style: italic;
+}
+
+/* Dark mode */
+[data-theme='dark'] .itau-search-input {
+  background-image: linear-gradient(#1b1b1d, #1b1b1d), linear-gradient(135deg, #ff6200, #ff7d00, #ff9c00, #ffcc00) !important;
+  color: #fff !important;
+}
+
+[data-theme='dark'] .itau-search-input::placeholder {
+  color: rgba(255, 204, 0, 0.6) !important;
+}
+
+/* Dropdown de resultados com borda degradê */
+.algolia-autocomplete .ds-dropdown-menu {
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(white, white),
+    linear-gradient(135deg, #ff6200, #ff7d00, #ff9c00, #ffcc00) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(255, 98, 0, 0.2) !important;
+}
+
+[data-theme='dark'] .algolia-autocomplete .ds-dropdown-menu {
+  background-image:
+    linear-gradient(#242526, #242526),
+    linear-gradient(135deg, #ff6200, #ff7d00, #ff9c00, #ffcc00) !important;
+}
+
+/* Resultado hover */
+.algolia-autocomplete .ds-dropdown-menu .ds-suggestion:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 98, 0, 0.1),
+    rgba(255, 204, 0, 0.1)
+  ) !important;
+}
+
+
+
