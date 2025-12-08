@@ -130,4 +130,79 @@
 }
 
 
+/* ========================================
+   Traço degradê animado nos itens da navbar
+   (EXCETO o item que é dropdown)
+   ======================================== */
+
+/* Links simples da navbar: mesma tag com navbar__item e navbar__link */
+.navbar__item.navbar__link:not(.navbar__item--dropdown) {
+  position: relative;
+  overflow: visible;
+}
+
+/* Linha degradê inicialmente escondida */
+.navbar__item.navbar__link:not(.navbar__item--dropdown)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.1rem; /* distância da linha para o texto */
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--itau-orange),
+    var(--itau-orange-151),
+    var(--itau-orange-137),
+    var(--itau-yellow-109)
+  );
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 999px;
+}
+
+/* Hover e ativo exibem a linha */
+.navbar__item.navbar__link:not(.navbar__item--dropdown):hover::after,
+.navbar__item.navbar__link:not(.navbar__item--dropdown).navbar__link--active::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Dark mode mantém o mesmo degradê */
+[data-theme='dark'] .navbar__item.navbar__link:not(.navbar__item--dropdown)::after {
+  background: linear-gradient(
+    90deg,
+    var(--itau-orange),
+    var(--itau-orange-151),
+    var(--itau-orange-137),
+    var(--itau-yellow-109)
+  );
+}
+
+
+/* Itens do dropdown */
+.dropdown__menu .dropdown__link {
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+/* Hover/ativo: laranja bem claro e quase transparente */
+.dropdown__menu .dropdown__link:hover,
+.dropdown__menu .dropdown__link--active {
+  background: rgba(255, 98, 0, 0.5) !important; /* bem suave */
+  color: inherit;
+}
+
+/* Dark mode: um pouco mais forte para aparecer no fundo escuro */
+[data-theme='dark'] .dropdown__menu .dropdown__link:hover,
+[data-theme='dark'] .dropdown__menu .dropdown__link--active {
+  background: rgba(255, 98, 0, 0.18) !important;
+  color: inherit;
+}
+.dropdown__menu{
+  border-radius: 0.7em;
+}
 

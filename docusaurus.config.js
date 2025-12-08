@@ -86,7 +86,7 @@ plugins: [
             label: 'GitHub',
             position: 'right',
           },
-          {type: 'dropdown', label:'teste', position: 'right',
+          {type: 'dropdown', label:'Teste', position: 'right',
 
             items: [
                 {
