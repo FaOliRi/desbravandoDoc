@@ -33,7 +33,9 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+plugins: [
+    require.resolve('docusaurus-lunr-search')
+  ],
   presets: [
     [
       'classic',
@@ -75,15 +77,29 @@ const config = {
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
-            position: 'left',
+            position: 'right',
             label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: 'Blog', position: 'right'},
           {
             href: 'https://github.com/faoliri/desbravandoDoc',
             label: 'GitHub',
             position: 'right',
           },
+          {type: 'dropdown', label:'Teste', position: 'right',
+
+            items: [
+                {
+                  label: 'Teste 1',
+                  to: '/docs/tutorial-basics/',
+                },
+               {
+                  label: 'Teste 2',
+                  to: '/docs/tutorial-extras/',
+                }, 
+
+            ]
+          }
         ],
       },
       footer: {
